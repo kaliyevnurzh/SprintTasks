@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                Введите сумму:
+            </td>
+            <td>
+                KZT (tenge)
+            </td>
+            <td>
+                USD (dollar)
+            </td>
+            <td>
+                EUR (euro)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="inp" style="width: 120px">
+                <select id="sel">
+                    <option value="KZT">KZT</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                </select>
+            </td>
+            <td>
+                <div id="KZT" style="color: #495758; background-color: #eaecef; height: 22px; width: 150px"></div>
+            </td>
+            <td>
+                <div id="USD" style="color: #495758; background-color: #eaecef; height: 22px; width: 150px"></div>
+            </td>
+            <td>
+                <div id="EUR" style="color: #495758; background-color: #eaecef; height: 22px; width: 150px"></div>
+            </td>
+        </tr>
+    </table>
+    <button onclick="getKurs()">RESULT</button>
+
+    <script>
+        function getKurs() {
+            let x = inp.value
+            let a = sel.value
+            if (a == "KZT") {
+                let us = (x / 431).toFixed(2)
+                let eu = (x / 509).toFixed(2)
+                document.getElementById("KZT").innerHTML = "<label style='padding-left: 10px; font-size: 20px'> - </label>"
+                document.getElementById("USD").innerHTML = us
+                document.getElementById("EUR").innerHTML = eu
+            } else if (a == "USD") {
+                let kz = (x * 429).toFixed(2)
+                let eu = (x / 1.186).toFixed(2)
+                document.getElementById("USD").innerHTML = "<label style='padding-left: 10px; font-size: 20px'> - </label>"
+                document.getElementById("KZT").innerHTML = kz
+                document.getElementById("EUR").innerHTML = eu
+            } else {
+                let kz = (x * 507).toFixed(2)
+                let us = (x * 1.176).toFixed(2)
+                document.getElementById("EUR").innerHTML = "<label style='padding-left: 10px; font-size: 20px'> - </label>"
+                document.getElementById("USD").innerHTML = us
+                document.getElementById("EUR").innerHTML = eu
+            }
+        }
+    </script>
+</body>
+</html>
